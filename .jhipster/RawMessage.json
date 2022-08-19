@@ -1,0 +1,48 @@
+{
+  "applications": ["tradeManagement", "capture"],
+  "changelogDate": "20220819231006",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "raw_message",
+  "fields": [
+    {
+      "fieldName": "messageType",
+      "fieldType": "MessageTypeEnum",
+      "fieldValues": "FIX,SWIFT,ULMESSAGE,SFTP"
+    },
+    {
+      "fieldName": "executionType",
+      "fieldType": "ExecutionTypeEnum",
+      "fieldValues": "ADD,AMEND,CANCEL"
+    },
+    {
+      "fieldName": "kafkaKey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "companyId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "executionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "message",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "creationTime",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RawMessage",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

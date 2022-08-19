@@ -1,0 +1,11 @@
+id;message_type;execution_type;kafka_key;company_id;execution_id;message;creation_time
+1;FIX;CANCEL;Bedfordshire Principal lavender;Associate;Wooden Inlet;../fake-data/blob/hipster.txt;2022-08-18T23:32:37
+2;SFTP;CANCEL;Fresh partnerships;deposit synthesizing;Fish;../fake-data/blob/hipster.txt;2022-08-19T05:57:45
+3;ULMESSAGE;AMEND;Cheese viral;HDD Reactive Extended;withdrawal;../fake-data/blob/hipster.txt;2022-08-19T18:52:08
+4;SWIFT;CANCEL;e-business Multi-tiered withdrawal;Executive;Associate;../fake-data/blob/hipster.txt;2022-08-19T13:40:07
+5;ULMESSAGE;ADD;Agent vortals Practical;Generic emulation Fresh;Mississippi;../fake-data/blob/hipster.txt;2022-08-19T10:33:40
+6;FIX;CANCEL;Field deposit;Shore yellow Investment;Common New;../fake-data/blob/hipster.txt;2022-08-19T14:13:32
+7;ULMESSAGE;CANCEL;Shoes best-of-breed;portals Plastic;Buckinghamshire;../fake-data/blob/hipster.txt;2022-08-19T09:47:09
+8;SFTP;CANCEL;transmit magenta;driver;Incredible;../fake-data/blob/hipster.txt;2022-08-19T13:02:05
+9;ULMESSAGE;AMEND;payment indexing;Small virtual Investment;Networked GB;../fake-data/blob/hipster.txt;2022-08-19T17:02:25
+10;SFTP;AMEND;Timor-Leste;Soap De-engineered Metal;Kwacha;../fake-data/blob/hipster.txt;2022-08-19T16:27:22

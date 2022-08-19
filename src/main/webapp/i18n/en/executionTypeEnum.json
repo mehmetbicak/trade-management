@@ -1,0 +1,10 @@
+{
+  "tradeManagementApp": {
+    "ExecutionTypeEnum": {
+      "null": "",
+      "ADD": "ADD",
+      "AMEND": "AMEND",
+      "CANCEL": "CANCEL"
+    }
+  }
+}

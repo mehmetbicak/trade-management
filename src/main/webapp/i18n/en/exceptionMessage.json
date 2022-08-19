@@ -1,0 +1,32 @@
+{
+  "tradeManagementApp": {
+    "exceptionMessage": {
+      "home": {
+        "title": "Exception Messages",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Exception Message",
+        "createOrEditLabel": "Create or edit a Exception Message",
+        "notFound": "No Exception Messages found"
+      },
+      "created": "A new Exception Message is created with identifier {{ param }}",
+      "updated": "A Exception Message is updated with identifier {{ param }}",
+      "deleted": "A Exception Message is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Exception Message {{ id }}?"
+      },
+      "detail": {
+        "title": "Exception Message"
+      },
+      "id": "ID",
+      "kafkaKey": "Kafka Key",
+      "exceptionCode": "Exception Code",
+      "exceptionMessage": "Exception Message",
+      "retryTopic": "Retry Topic",
+      "rawMessage": "Raw Message",
+      "retryCount": "Retry Count",
+      "creationTime": "Creation Time",
+      "lastExecutionTime": "Last Execution Time",
+      "statusType": "Status Type"
+    }
+  }
+}

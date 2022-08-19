@@ -1,0 +1,11 @@
+{
+  "tradeManagementApp": {
+    "MessageTypeEnum": {
+      "null": "",
+      "FIX": "FIX",
+      "SWIFT": "SWIFT",
+      "ULMESSAGE": "ULMESSAGE",
+      "SFTP": "SFTP"
+    }
+  }
+}

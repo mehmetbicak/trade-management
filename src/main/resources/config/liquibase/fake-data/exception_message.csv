@@ -1,0 +1,11 @@
+id;kafka_key;exception_code;exception_message;retry_topic;raw_message;retry_count;creation_time;last_execution_time;status_type
+1;Liberia Digitized;supply-chains Monitored;Integration Toys;lavender invoice monitor;../fake-data/blob/hipster.txt;63467;2022-08-19T20:51:29;2022-08-19T15:32:29;RETRYABLE
+2;matrix Assistant;connect;back-end;Clothing extensible;../fake-data/blob/hipster.txt;44802;2022-08-18T23:27:44;2022-08-19T04:27:36;MAX_RETRY_EXCEEDED
+3;Arizona Tools;zero fuchsia;International;Borders quantify matrix;../fake-data/blob/hipster.txt;90945;2022-08-18T23:30:51;2022-08-19T08:33:04;RESOLVED
+4;azure;HDD Producer;Account Right-sized back;system;../fake-data/blob/hipster.txt;33612;2022-08-19T07:06:19;2022-08-19T03:59:51;RETRYABLE
+5;seize architectures tan;Bahraini holistic;Granite CSS;Highway Account;../fake-data/blob/hipster.txt;2946;2022-08-19T22:01:08;2022-08-19T01:51:38;IN_PROGRESS
+6;scalable HDD;Botswana primary;purple Jewelery repurpose;internet digital;../fake-data/blob/hipster.txt;88723;2022-08-19T21:25:25;2022-08-19T20:55:57;RESOLVED
+7;Awesome Sports Small;convergence program firewall;compressing Web;Fantastic Internal;../fake-data/blob/hipster.txt;51859;2022-08-19T17:05:25;2022-08-19T01:26:07;RESOLVED
+8;Slovenia JBOD static;Mandatory wireless;help-desk auxiliary fault-tolerant;Buckinghamshire Movies;../fake-data/blob/hipster.txt;75495;2022-08-19T11:41:32;2022-08-19T22:55:53;NON_RETRYABLE
+9;copy Forward;Manager Switchable;Pa'anga maroon pricing;Re-engineered Pizza Networked;../fake-data/blob/hipster.txt;7650;2022-08-19T01:39:27;2022-08-19T11:16:03;MAX_RETRY_EXCEEDED
+10;hardware;Paraguay Program e-enable;Account;Nuevo;../fake-data/blob/hipster.txt;24950;2022-08-19T08:40:41;2022-08-19T20:07:04;NON_RETRYABLE

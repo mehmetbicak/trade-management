@@ -1,0 +1,55 @@
+{
+  "applications": ["tradeManagement", "exceptionHandler"],
+  "changelogDate": "20220819230906",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "exception_message",
+  "fields": [
+    {
+      "fieldName": "kafkaKey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exceptionCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exceptionMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "retryTopic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rawMessage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "retryCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "creationTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastExecutionTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "statusType",
+      "fieldType": "StatusTypeEnum",
+      "fieldValues": "NON_RETRYABLE,RETRYABLE,IN_PROGRESS,RESOLVED,MAX_RETRY_EXCEEDED"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ExceptionMessage",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}
