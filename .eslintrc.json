@@ -24,6 +24,7 @@
     }
   },
   "rules": {
+    "no-console": "off",
     "@typescript-eslint/member-ordering": [
       "error",
       {

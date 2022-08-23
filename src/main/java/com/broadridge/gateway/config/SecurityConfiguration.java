@@ -67,6 +67,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+
         // @formatter:off
         http
             .securityMatcher(new NegatedServerWebExchangeMatcher(new OrServerWebExchangeMatcher(
@@ -81,15 +82,17 @@ public class SecurityConfiguration {
             .exceptionHandling()
                 .accessDeniedHandler(problemSupport)
                 .authenticationEntryPoint(problemSupport)
+       /*
         .and()
             .headers()
-            .contentSecurityPolicy(jHipsterProperties.getSecurity().getContentSecurityPolicy())
+            .contentSecurityPolicy(jHipsterProperties.getSecurity().getContentSecurityPolicy()
+            + " https://135db7e4-b4f7-4f1c-a230-4dce2700a7d0.mock.pstmn.io/api" )
             .and()
                 .referrerPolicy(ReferrerPolicyServerHttpHeadersWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN)
             .and()
                 .permissionsPolicy().policy("camera=(), fullscreen=(self), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), sync-xhr=()")
             .and()
-                .frameOptions().mode(Mode.DENY)
+                .frameOptions().mode(Mode.DENY) */
         .and()
             .authorizeExchange()
             .pathMatchers("/").permitAll()
@@ -111,7 +114,9 @@ public class SecurityConfiguration {
             .pathMatchers("/management/health/**").permitAll()
             .pathMatchers("/management/info").permitAll()
             .pathMatchers("/management/prometheus").permitAll()
-            .pathMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN);
+            .pathMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers("*/**").permitAll()
+        ;
         // @formatter:on
         return http.build();
     }

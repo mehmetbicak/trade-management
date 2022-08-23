@@ -8,7 +8,7 @@ import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { IExceptionMessage } from 'app/shared/model/exception-message.model';
-import { getEntities } from './exception-message.reducer';
+import { getEntities, retryEntity } from './exception-message.reducer';
 
 export const ExceptionMessage = (props: RouteComponentProps<{ url: string }>) => {
   const dispatch = useAppDispatch();
@@ -24,6 +24,10 @@ export const ExceptionMessage = (props: RouteComponentProps<{ url: string }>) =>
     dispatch(getEntities({}));
   };
 
+  const retry = entity => {
+    dispatch(retryEntity(entity));
+  };
+
   const { match } = props;
 
   return (
@@ -35,11 +39,6 @@ export const ExceptionMessage = (props: RouteComponentProps<{ url: string }>) =>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
             <Translate contentKey="tradeManagementApp.exceptionMessage.home.refreshListLabel">Refresh List</Translate>
           </Button>
-          <Link to="/exception-message/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
-            <FontAwesomeIcon icon="plus" />
-            &nbsp;
-            <Translate contentKey="tradeManagementApp.exceptionMessage.home.createLabel">Create new Exception Message</Translate>
-          </Link>
         </div>
       </h2>
       <div className="table-responsive">
@@ -111,38 +110,17 @@ export const ExceptionMessage = (props: RouteComponentProps<{ url: string }>) =>
                     <div className="btn-group flex-btn-group-container">
                       <Button
                         tag={Link}
-                        to={`/exception-message/${exceptionMessage.id}`}
-                        color="info"
-                        size="sm"
-                        data-cy="entityDetailsButton"
-                      >
-                        <FontAwesomeIcon icon="eye" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.view">View</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/exception-message/${exceptionMessage.id}/edit`}
+                        // https://10444706-8d64-4055-a3d2-26d2bc9933e1.mock.pstmn.io/api/exception-messages
+                        // to={`/exception-message/${exceptionMessage.id}/edit`}
+                        // to="https://10444706-8d64-4055-a3d2-26d2bc9933e1.mock.pstmn.io/api/exception-messages/retry/1"
+                        onClick={() => retry(exceptionMessage)}
                         color="primary"
                         size="sm"
-                        data-cy="entityEditButton"
+                        data-cy="entityRetryButton"
                       >
                         <FontAwesomeIcon icon="pencil-alt" />{' '}
                         <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/exception-message/${exceptionMessage.id}/delete`}
-                        color="danger"
-                        size="sm"
-                        data-cy="entityDeleteButton"
-                      >
-                        <FontAwesomeIcon icon="trash" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.delete">Delete</Translate>
+                          <Translate contentKey="entity.action.retry">Retry</Translate>
                         </span>
                       </Button>
                     </div>

@@ -24,5 +24,9 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["src/main/webapp/app"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "rules": {
+    "no-console": "off"
+
+  }
 }

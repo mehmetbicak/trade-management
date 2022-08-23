@@ -19,55 +19,26 @@ const apiUrl = 'api/exception-messages';
 // Actions
 
 export const getEntities = createAsyncThunk('exceptionMessage/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
-  const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
+  const requestUrl = 'https://10444706-8d64-4055-a3d2-26d2bc9933e1.mock.pstmn.io/api/exception-messages'; // `${apiUrl}?cacheBuster=${new Date().getTime()}`;
+  // eslint-disable-next-line no-console
+  console.log('getEntities called for Exception-Message');
+  // eslint-disable-next-line no-console
+  console.log(requestUrl);
   return axios.get<IExceptionMessage[]>(requestUrl);
 });
 
-export const getEntity = createAsyncThunk(
-  'exceptionMessage/fetch_entity',
-  async (id: string | number) => {
-    const requestUrl = `${apiUrl}/${id}`;
-    return axios.get<IExceptionMessage>(requestUrl);
-  },
-  { serializeError: serializeAxiosError }
-);
-
-export const createEntity = createAsyncThunk(
-  'exceptionMessage/create_entity',
+export const retryEntity = createAsyncThunk(
+  'exceptionMessage/retry_entity',
   async (entity: IExceptionMessage, thunkAPI) => {
-    const result = await axios.post<IExceptionMessage>(apiUrl, cleanEntity(entity));
+    const requestUrl = 'https://10444706-8d64-4055-a3d2-26d2bc9933e1.mock.pstmn.io/api/exception-messages/retry/1'; // `${apiUrl}?cacheBuster=${new Date().getTime()}`;
+  // eslint-disable-next-line no-console
+  console.log('requestUrl:' + requestUrl);
+    const result = await axios.put<IExceptionMessage>(requestUrl, cleanEntity(entity));
+  // eslint-disable-next-line no-console
+  console.log('RETRY SUCCESS:' + JSON.stringify(result));
+//    const result = await axios.put<IExceptionMessage>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
     thunkAPI.dispatch(getEntities({}));
-    return result;
-  },
-  { serializeError: serializeAxiosError }
-);
 
-export const updateEntity = createAsyncThunk(
-  'exceptionMessage/update_entity',
-  async (entity: IExceptionMessage, thunkAPI) => {
-    const result = await axios.put<IExceptionMessage>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
-    thunkAPI.dispatch(getEntities({}));
-    return result;
-  },
-  { serializeError: serializeAxiosError }
-);
-
-export const partialUpdateEntity = createAsyncThunk(
-  'exceptionMessage/partial_update_entity',
-  async (entity: IExceptionMessage, thunkAPI) => {
-    const result = await axios.patch<IExceptionMessage>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
-    thunkAPI.dispatch(getEntities({}));
-    return result;
-  },
-  { serializeError: serializeAxiosError }
-);
-
-export const deleteEntity = createAsyncThunk(
-  'exceptionMessage/delete_entity',
-  async (id: string | number, thunkAPI) => {
-    const requestUrl = `${apiUrl}/${id}`;
-    const result = await axios.delete<IExceptionMessage>(requestUrl);
-    thunkAPI.dispatch(getEntities({}));
     return result;
   },
   { serializeError: serializeAxiosError }
@@ -80,15 +51,6 @@ export const ExceptionMessageSlice = createEntitySlice({
   initialState,
   extraReducers(builder) {
     builder
-      .addCase(getEntity.fulfilled, (state, action) => {
-        state.loading = false;
-        state.entity = action.payload.data;
-      })
-      .addCase(deleteEntity.fulfilled, state => {
-        state.updating = false;
-        state.updateSuccess = true;
-        state.entity = {};
-      })
       .addMatcher(isFulfilled(getEntities), (state, action) => {
         const { data } = action.payload;
 
@@ -98,18 +60,18 @@ export const ExceptionMessageSlice = createEntitySlice({
           entities: data,
         };
       })
-      .addMatcher(isFulfilled(createEntity, updateEntity, partialUpdateEntity), (state, action) => {
+      .addMatcher(isFulfilled(retryEntity), (state, action) => {
         state.updating = false;
         state.loading = false;
         state.updateSuccess = true;
         state.entity = action.payload.data;
       })
-      .addMatcher(isPending(getEntities, getEntity), state => {
+      .addMatcher(isPending(getEntities), state => {
         state.errorMessage = null;
         state.updateSuccess = false;
         state.loading = true;
       })
-      .addMatcher(isPending(createEntity, updateEntity, partialUpdateEntity, deleteEntity), state => {
+      .addMatcher(isPending(retryEntity), state => {
         state.errorMessage = null;
         state.updateSuccess = false;
         state.updating = true;

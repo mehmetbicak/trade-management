@@ -20,13 +20,6 @@ logging:
     org.hibernate.SQL: DEBUG
     com.broadridge.gateway: DEBUG
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
-
 spring:
   devtools:
     restart:
@@ -37,14 +30,6 @@ spring:
   jackson:
     serialization:
       indent-output: true
-  cloud:
-    config:
-      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
-      # name of the config server's property source (file.yml) that we want to use
-      name: tradeManagement
-      profile: dev
-      label: main # toggle to switch to a different version of the configuration as stored in git
-      # it can be set to any label, branch or commit of the configuration source Git repository
   h2:
     console:
       # disable spring boot built-in h2-console since we start it manually with correct configuration
@@ -74,12 +59,6 @@ spring:
     enabled: false
     sampler:
       probability: 1 # report 100% of traces
-  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
-    base-url: http://localhost:9411
-    enabled: false
-    locator:
-      discovery:
-        enabled: true
 
 server:
   port: 8080
